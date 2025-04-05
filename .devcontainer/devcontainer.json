@@ -1,0 +1,21 @@
+{
+	"name": "datadriven-portfolio",
+	"dockerFile": "../Dockerfile",
+	"context": "..",
+	"appPort": ["5173:5173"],
+	"postCreateCommand": "npm install",
+	"customizations": {
+	  "vscode": {
+		"settings": {
+		  "terminal.integrated.defaultProfile.linux": "bash",
+		  "editor.formatOnSave": true
+		},
+		"extensions": [
+		  "esbenp.prettier-vscode",
+		  "dbaeumer.vscode-eslint"
+		]
+	  }
+	},
+	"remoteUser": "node"
+  }
+  
