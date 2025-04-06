@@ -22,6 +22,7 @@ COPY . .
 
 # Expose Vite dev server port
 EXPOSE 5173
+EXPOSE 4173
 
 # Default command
 CMD ["npm", "run", "dev"]
