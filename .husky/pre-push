@@ -1,1 +1,4 @@
+scripts/check-branch.sh || exit 1
+scripts/check-naming.sh || exit 1
+scripts/check-commit-signing.sh || exit 1
 npm test

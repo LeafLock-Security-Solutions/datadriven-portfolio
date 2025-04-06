@@ -1,1 +1,7 @@
+scripts/check-branch.sh || exit 1
+scripts/check-max-files.sh || exit 1
+scripts/check-typos.sh || exit 1
+scripts/check-naming.sh || exit 1
+scripts/check-secrets.sh || exit 1
+scripts/check-large-files.sh || exit 1
 npx lint-staged
