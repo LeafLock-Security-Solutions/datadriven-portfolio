@@ -104,6 +104,20 @@ Testing support and examples will be added in future versions.
 
 ---
 
+## 🔧 Troubleshooting
+
+### Dev Server Not Loading in Browser?
+
+If the terminal shows the app is running at `http://0.0.0.0:5173`, but the browser says **"site can't be reached"**, try this instead:
+
+```
+http://localhost:5173
+```
+
+This can happen on some systems (especially Windows with Docker/WSL).
+
+---
+
 ## 🤝 Contributing
 
 If you're interested in contributing, please read the [CONTRIBUTING.md](docs/CONTRIBUTING.md) guide.
