@@ -74,6 +74,19 @@ Make sure your JSON file is publicly accessible.
 
 ---
 
+## 🌍 Preview Mode
+
+To simulate the production version locally:
+
+```bash
+npm run build        # Must be run first
+npm run preview      # Starts the preview server at http://localhost:4173
+```
+
+> ⚠️ If you skip the build step, the preview server will not work as it depends on the compiled output in the `dist/` folder.
+
+---
+
 ## 🧹 Project Structure
 
 ```bash
