@@ -1,6 +1,6 @@
 # 🛠️ Development Guide
 
-Welcome to the developer guide for **datadriven-portfolio**. This document explains how to set up the project locally, run it in development mode, and understand the code structure.
+Welcome to the developer guide for **datadriven-portfolio**. This document explains how to set up the project locally using Docker, run it in development mode, and understand the code structure.
 
 ---
 
@@ -13,29 +13,31 @@ git clone https://github.com/LeafLock-Security-Solutions/datadriven-portfolio.gi
 cd datadriven-portfolio
 ```
 
-### 2. Install Dependencies
+### 2. Build and Start the Dev Container
 
-Make sure you have **Node.js (>=18.x)** and **npm** or **yarn** installed.
+Ensure you have **Docker** and **Dev Containers (VS Code Extension)** installed.
+
+1. Open the project in VS Code
+2. When prompted, reopen in container — or manually:
 
 ```bash
-# Using npm
-npm install
-
-# Or using yarn
-yarn install
+# If using devcontainers CLI
+devcontainer open .
 ```
 
-### 3. Start the Development Server
+3. VS Code will build the container using `Dockerfile` and `devcontainer.json`.
+
+> ℹ️ First-time setup may take a few minutes to pull images and install dependencies.
+
+### 3. Start the Development Server (inside container)
+
+Once inside the dev container terminal:
 
 ```bash
-# Using npm
 npm run dev
-
-# Or using yarn
-yarn dev
 ```
 
-This will start the app on `http://localhost:3000`.
+This will start the app on `http://localhost:5173` (or similar port).
 
 ---
 
@@ -49,7 +51,7 @@ VITE_PUBLIC_DATA_URL=https://yourdomain.com/your-portfolio.json
 
 You can define this in a `.env` file at the root of the project:
 
-```
+```bash
 # .env
 VITE_PUBLIC_DATA_URL=https://charanravela.com/data.json
 ```
@@ -60,35 +62,43 @@ Make sure your JSON file is publicly accessible.
 
 ## 🧾 Scripts
 
-| Script         | Description                  |
-|----------------|------------------------------|
-| `dev`          | Starts local dev server       |
-| `build`        | Creates a production build    |
-| `preview`      | Previews the production build |
+| Script         | Description                      |
+| -------------- | -------------------------------- |
+| `dev`          | Starts local dev server          |
+| `build`        | Creates a production build       |
+| `preview`      | Previews the production build    |
+| `format`       | Formats all files using Prettier |
+| `format:check` | Checks formatting consistency    |
+| `lint`         | Runs ESLint on all files         |
+| `lint:fix`     | Runs ESLint and fixes issues     |
 
 ---
 
-## 🧩 Project Structure
+## 🧹 Project Structure
 
 ```bash
 datadriven-portfolio/
+├── .devcontainer/           # Dev container setup
+├── docs/                    # Project documentation files
 ├── public/                  # Static assets
-├── src/
+├── src/                     # Source code
 │   ├── components/          # Reusable UI components
-│   ├── sections/            # Sections of the portfolio (About, Projects, etc.)
+│   ├── sections/            # Portfolio sections (About, Projects, etc.)
 │   ├── hooks/               # Custom React hooks
 │   ├── utils/               # Utility functions
 │   ├── config/              # App-level constants and helpers
 │   ├── styles/              # Global CSS or Tailwind config
-│   ├── App.tsx              # Main app layout
-│   └── main.tsx             # Entry point
+│   ├── App.jsx              # Main app layout
+│   └── main.jsx             # Entry point
 ├── .env                     # Environment config
+├── Dockerfile               # Base image definition
+├── docker-compose.yml       # Container orchestration
 └── index.html               # HTML template
 ```
 
 ---
 
-## 🧪 Testing *(Coming Soon)*
+## 🦪 Testing _(Coming Soon)_
 
 Testing support and examples will be added in future versions.
 
@@ -96,7 +106,7 @@ Testing support and examples will be added in future versions.
 
 ## 🤝 Contributing
 
-If you're interested in contributing, please read the [CONTRIBUTING.md](CONTRIBUTING.md) guide.
+If you're interested in contributing, please read the [CONTRIBUTING.md](docs/CONTRIBUTING.md) guide.
 
 ---
 
@@ -104,4 +114,3 @@ If you're interested in contributing, please read the [CONTRIBUTING.md](CONTRIBU
 
 For support, open an issue at:  
 [https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/issues](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/issues)
-
