@@ -18,17 +18,16 @@ RESET="\033[0m"
 
 echo "\n🔐 ${YELLOW}Verifying commit signature...${RESET}"
 
-# Check the last (staged) commit
-SIGN_STATUS=$(git log -1 --pretty=%G?)
-SIGNER_NAME=$(git log -1 --pretty="%GS")
-COMMIT_HASH=$(git log -1 --pretty="%H")
+LAST_COMMIT=$(git rev-parse HEAD)
+SIGNATURE_INFO=$(git log --show-signature -1 "$LAST_COMMIT" 2>/dev/null)
 
-if [ "$SIGN_STATUS" = "G" ]; then
-  echo "${GREEN}✅ Commit $COMMIT_HASH is signed by: $SIGNER_NAME${RESET}"
+# Check for common signature types (GPG or Gitsign)
+if echo "$SIGNATURE_INFO" | grep -qE "Good signature|gitsign: Good signature"; then
+  echo "${GREEN}✅ Commit $LAST_COMMIT is signed and verified.${RESET}"
   exit 0
 else
-  echo "${RED}❌ Commit $COMMIT_HASH is not signed!${RESET}"
-  echo "\nPlease sign your commit using GPG or a signing tool like gitsign."
+  echo "${RED}❌ Commit $LAST_COMMIT is not signed!${RESET}"
+  echo "${YELLOW}Please sign your commit using GPG or Gitsign before pushing.${RESET}"
   echo "Refer to https://docs.github.com/en/authentication/managing-commit-signature-verification"
   exit 1
 fi
