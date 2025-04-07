@@ -1,4 +1,6 @@
 import js from '@eslint/js';
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
 import jest from 'eslint-plugin-jest';
 import jsdoc from 'eslint-plugin-jsdoc';
 import perfectionist from 'eslint-plugin-perfectionist';
@@ -19,6 +21,7 @@ export default [
         ...globals.browser,
         ...globals.jest,
       },
+      parser: tsParser,
       parserOptions: {
         ecmaFeatures: { jsx: true },
         ecmaVersion: 'latest',
@@ -26,6 +29,7 @@ export default [
       },
     },
     plugins: {
+      '@typescript-eslint': tseslint,
       jest,
       jsdoc,
       perfectionist,
@@ -45,6 +49,48 @@ export default [
       ...perfectionist.configs['recommended-alphabetical'].rules,
       ...jest.configs.recommended.rules,
       ...prettier.configs.recommended.rules,
+      ...tseslint.configs.recommended.rules,
+      '@typescript-eslint/naming-convention': [
+        'error',
+        {
+          format: ['camelCase'],
+          leadingUnderscore: 'allow',
+          selector: 'variableLike',
+        },
+        {
+          format: ['camelCase'],
+          selector: 'function',
+        },
+        {
+          format: ['PascalCase'],
+          selector: 'class',
+        },
+        {
+          custom: {
+            match: false,
+            regex: '^I[A-Z]',
+          },
+          format: ['PascalCase'],
+          selector: 'interface',
+        },
+        {
+          format: ['PascalCase'],
+          selector: 'typeAlias',
+        },
+        {
+          format: ['PascalCase'],
+          selector: 'enum',
+        },
+        {
+          format: ['UPPER_CASE', 'PascalCase'],
+          selector: 'enumMember',
+        },
+        {
+          format: ['UPPER_CASE', 'camelCase'],
+          modifiers: ['const'],
+          selector: 'variable',
+        },
+      ],
       'comma-dangle': ['error', 'always-multiline'],
       eqeqeq: ['error', 'always'],
       indent: ['error', 2, { SwitchCase: 1 }],
