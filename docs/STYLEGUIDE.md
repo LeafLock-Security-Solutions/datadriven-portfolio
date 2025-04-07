@@ -8,12 +8,25 @@ This document outlines the **code style**, **design principles**, and **UX guide
 
 ### 🔡 Naming Conventions
 
-- **Components**: PascalCase (e.g., `UserCard`, `HeroSection`)
-- **Files/Folders**: kebab-case or camelCase (e.g., `project-list`, `socialLinks`)
-- **Variables/Functions**: camelCase (e.g., `fetchData`, `userName`)
-- **Constants**: UPPER_SNAKE_CASE (e.g., `DEFAULT_THEME`)
+These naming conventions are enforced using ESLint (`@typescript-eslint/naming-convention` rule):
 
-### 📁 Folder Organization
+| Element           | Convention                                           | Example                                                           |
+| ----------------- | ---------------------------------------------------- | ----------------------------------------------------------------- |
+| Components        | `PascalCase`                                         | `UserCard`, `HeroSection`                                         |
+| Functions         | `camelCase`                                          | `fetchData`, `handleSubmit`                                       |
+| Variables         | `camelCase`                                          | `userName`, `portfolioList`                                       |
+| Constants         | `UPPER_SNAKE_CASE`                                   | `DEFAULT_THEME`, `API_BASE_URL`                                   |
+| Classes           | `PascalCase`                                         | `PortfolioSection`                                                |
+| Enum & EnumMember | `PascalCase` / `UPPER_CASE`                          | `ThemeType`, `DARK_MODE`                                          |
+| Type Alias        | `PascalCase`                                         | `PortfolioData`, `SectionConfig`                                  |
+| Interfaces        | `PascalCase` (no `I` prefix)                         | `UserProfile`, not `IUserProfile`                                 |
+| Files & Folders   | `kebab-case` (Markdown files use `UPPER_SNAKE_CASE`) | `project-card/`, `portfolio.json`, `README.md`, `CONTRIBUTING.md` |
+
+> ⚠️ ESLint will throw errors for any naming violations.
+
+---
+
+## 📁 Folder Organization
 
 Keep structure modular and scoped:
 
@@ -71,17 +84,19 @@ src/
 
 ## ✅ Linting & Formatting
 
-We recommend using:
+We use the following tools:
 
 - **Prettier** for consistent formatting
 - **ESLint** for code quality
-- Optionally: `husky` + `lint-staged` for pre-commit hooks
+- **@typescript-eslint/naming-convention** for naming rules
+- **husky** + **lint-staged** for Git pre-commit enforcement
 
 ---
 
-## 🧪 Testing Style *(Planned)*
+## 🧪 Testing Style _(Planned)_
 
 When test setup is complete:
+
 - Use `describe/it` structure
 - Keep test files next to components with `.test.tsx` or `.spec.tsx`
 - Follow the Arrange–Act–Assert pattern
@@ -91,4 +106,3 @@ When test setup is complete:
 ## 💬 Questions?
 
 Open an issue or start a discussion if you're unsure how to style or name something.
-
