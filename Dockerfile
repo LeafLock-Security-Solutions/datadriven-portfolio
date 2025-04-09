@@ -11,8 +11,10 @@ RUN apt-get update && \
     echo "node ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
     rm -rf /var/lib/apt/lists/*
 
-# Copy only package files to install dependencies early (for caching)
+# Copy only necessary files for dependency install + husky setup
 COPY package*.json ./
+COPY scripts ./scripts
+COPY .husky ./.husky
 
 # Install dependencies
 RUN npm install
