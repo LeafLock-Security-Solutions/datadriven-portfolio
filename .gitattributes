@@ -1,0 +1,13 @@
+# Always use LF in all files
+* text=auto eol=lf
+
+# Enforce LF in shell scripts
+*.sh text eol=lf
+
+# Enforce LF in config & code
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
