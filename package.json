@@ -12,7 +12,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky",
-    "postinstall": "chmod +x scripts/*.sh",
+    "postinstall": "sudo chmod +x scripts/*.sh || chmod +x scripts/*.sh",
     "spell": "cspell lint . --no-progress --color --show-suggestions",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch"
