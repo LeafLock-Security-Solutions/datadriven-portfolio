@@ -2,38 +2,45 @@
 
 # -----------------------------------------------------------------------------------
 # Script: check-typos.sh
-# Purpose: Runs cspell to check for typos in code, comments, docstrings,
-# Markdown, file/folder names, and more.
+# Purpose: Uses cspell to catch spelling mistakes in code, comments, and markdown.
+#
+# Blocks commit if any spelling issues are found in staged files.
 #
 # Example usage (inside .husky/pre-commit):
 #   scripts/check-typos.sh || exit 1
-#
-# Behavior: This script fails the commit if any typos are found.
 # -----------------------------------------------------------------------------------
 
-RED="\033[0;31m"
-GREEN="\033[0;32m"
-YELLOW="\033[1;33m"
-RESET="\033[0m"
+. "$(dirname "$0")/utils.sh"
 
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR | grep -v '^node_modules/' | grep -E '\.(js|jsx|ts|tsx|json|md|css|html)$')
+# Filter staged files with common source or doc extensions
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR \
+  | grep -v '^node_modules/' \
+  | grep -E '\.(js|jsx|ts|tsx|json|md|css|html)$')
 
 if [ -z "$STAGED_FILES" ]; then
-  echo "\n${YELLOW}No relevant files staged for typo check.${RESET}"
+  echo ""
+  log_info "No relevant files staged for typo check."
   exit 0
 fi
 
-echo "\n🔍 ${YELLOW}Checking spelling and typos with cspell...${RESET}"
+echo ""
+log_info "🔍 Checking spelling and typos with cspell..."
 
-# Run cspell strictly
-npx cspell lint $STAGED_FILES --no-progress --color --show-suggestions
+# Run cspell with useful flags
+npx cspell lint $STAGED_FILES \
+  --no-progress \
+  --color \
+  --show-suggestions
+
 STATUS=$?
 
 if [ "$STATUS" -ne 0 ]; then
-  echo "\n${RED}❌ Commit blocked due to spelling/typo issues.${RESET}"
-  echo "${YELLOW}Please fix the above typos or add valid words to .cspell.json if needed.${RESET}"
+  echo ""
+  log_error "Commit blocked due to spelling/typo issues."
+  log_info "Please fix the above typos or add valid words to .cspell.json if needed."
   exit 1
 else
-  echo "\n${GREEN}✅ No spelling issues found.${RESET}"
+  echo ""
+  log_success "No spelling issues found."
   exit 0
 fi

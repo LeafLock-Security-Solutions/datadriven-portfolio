@@ -2,28 +2,24 @@
 
 # -----------------------------------------------------------------------------------
 # Script: check-secrets.sh
-# Purpose: Prevents accidental commits of API keys, tokens, passwords, and hardcoded
-# absolute file/folder paths.
+# Purpose: Prevents accidental commits of API keys, tokens, passwords,
+# or hardcoded absolute file/folder paths.
 #
-# - Runs Gitleaks via Docker to detect secrets in source
-# - Scans staged files for UNIX and Windows-style absolute paths
-# - Blocks commit if any issues are found
+# - Runs Gitleaks via Docker
+# - Scans for UNIX and Windows-style absolute paths
+# - Blocks commit if anything suspicious is found
 #
 # Example usage (inside .husky/pre-commit):
 #   scripts/check-secrets.sh || exit 1
-#
-# Supports JavaScript/TypeScript, JSON, Markdown, CSS files.
 # -----------------------------------------------------------------------------------
 
-RED="\033[0;31m"
-GREEN="\033[0;32m"
-YELLOW="\033[1;33m"
-RESET="\033[0m"
+. "$(dirname "$0")/utils.sh"
 
-echo "\n🔍 ${YELLOW}Running secret and path scan before commit...${RESET}"
+echo ""
+log_info "🔍 Running secret and path scan before commit..."
 
 # --- Run Gitleaks via Docker ---
-echo "\n🚨 Scanning with Gitleaks (via Docker)..."
+log_info "🚨 Scanning with Gitleaks (via Docker)..."
 docker run --rm \
   -v "$(pwd)":/path \
   zricethezav/gitleaks:latest \
@@ -31,35 +27,36 @@ docker run --rm \
 
 GITLEAKS_STATUS=$?
 
-# --- Scan staged files for absolute paths ---
-echo "\n🧐 Checking for hardcoded absolute file/folder paths..."
+# --- Scan for hardcoded absolute paths ---
+log_info "🧠 Checking for hardcoded absolute file/folder paths..."
 
-# Get list of staged files
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -v '^node_modules/' | grep -E '\.(js|jsx|ts|tsx|json|md|css)$')
 
 HAS_PATH_ISSUES=0
 
 for FILE in $STAGED_FILES; do
-  if [ -f "$FILE" ]; then
-    # UNIX paths: /Users/ or /home/
-    grep -nE '/Users/|/home/' "$FILE" | while read -r LINE; do
-      echo "${RED}❌ [$FILE:${LINE%%:*}] UNIX path detected:${RESET} ${LINE#*:}"
-      HAS_PATH_ISSUES=1
-    done
+  [ -f "$FILE" ] || continue
 
-    # Windows paths: C:\\Users\\ or D:\\Projects\\
-    grep -nE '[A-Z]:\\\\Users\\\\|[A-Z]:\\\\Projects\\\\' "$FILE" | while read -r LINE; do
-      echo "${RED}❌ [$FILE:${LINE%%:*}] Windows path detected:${RESET} ${LINE#*:}"
-      HAS_PATH_ISSUES=1
-    done
-  fi
+  # Check UNIX absolute paths
+  grep -nE '/Users/|/home/' "$FILE" | while read -r LINE; do
+    log_error "[$FILE:${LINE%%:*}] UNIX path detected: ${LINE#*:}"
+    HAS_PATH_ISSUES=1
+  done
+
+  # Check Windows absolute paths
+  grep -nE '[A-Z]:\\\\Users\\\\|[A-Z]:\\\\Projects\\\\' "$FILE" | while read -r LINE; do
+    log_error "[$FILE:${LINE%%:*}] Windows path detected: ${LINE#*:}"
+    HAS_PATH_ISSUES=1
+  done
 done
 
 # --- Final check ---
 if [ "$GITLEAKS_STATUS" -ne 0 ] || [ "$HAS_PATH_ISSUES" -ne 0 ]; then
-  echo "\n${RED}❌ Commit blocked due to detected secrets or absolute paths.${RESET}"
+  echo ""
+  log_error "Commit blocked due to detected secrets or absolute paths."
   exit 1
 else
-  echo "\n${GREEN}✅ No secrets or absolute paths found. Proceeding with commit.${RESET}"
+  echo ""
+  log_success "No secrets or absolute paths found. Proceeding with commit."
   exit 0
 fi
