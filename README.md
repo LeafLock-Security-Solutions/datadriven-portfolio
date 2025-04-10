@@ -1,6 +1,24 @@
-# datadriven-portfolio
+# 🧠 datadriven-portfolio
 
 **Your portfolio, powered by JSON. Zero code. Total flexibility.**
+
+[![Status](https://img.shields.io/badge/status-active-brightgreen)](#)
+[![Version](https://img.shields.io/github/package-json/v/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio)
+[![Last Commit](https://img.shields.io/github/last-commit/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/commits/main)
+[![License](https://img.shields.io/github/license/LeafLock-Security-Solutions/datadriven-portfolio)](https://www.apache.org/licenses/LICENSE-2.0)
+
+[![Lint](https://img.shields.io/badge/lint-passing-brightgreen?logo=eslint)](#)
+[![Prettier](https://img.shields.io/badge/code%20style-prettier-ff69b4?logo=prettier)](#)
+[![Tests](https://img.shields.io/badge/tests-setup-green?logo=jest)](#)
+[![Commit Signatures](https://img.shields.io/badge/commits-signed-orange?logo=git)](#)
+[![Spell Check](https://img.shields.io/badge/spellcheck-enabled-blue)](#)
+[![MD Links](https://img.shields.io/badge/markdown-links--checked-yellow)](#)
+
+[![Build](https://img.shields.io/github/actions/workflow/status/LeafLock-Security-Solutions/datadriven-portfolio/ci.yml?branch=main)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/actions)
+[![Code Coverage](https://img.shields.io/codecov/c/github/LeafLock-Security-Solutions/datadriven-portfolio)](https://codecov.io/gh/LeafLock-Security-Solutions/datadriven-portfolio)
+[![Security](https://img.shields.io/badge/security-monitored-orange)](#)
+[![Repo Size](https://img.shields.io/github/repo-size/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio)
+[![Open Issues](https://img.shields.io/github/issues/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/issues)
 
 ---
 
@@ -26,7 +44,7 @@ This project lets you **modify all content via a simple JSON file**, making it e
 ## 🛠️ Tech Stack
 
 - [React](https://reactjs.org/)  
-*(More tools/libraries to be added as the project evolves)*
+  _(More tools/libraries to be added as the project evolves)_
 
 ---
 
@@ -35,6 +53,7 @@ This project lets you **modify all content via a simple JSON file**, making it e
 All your content lives in a **single JSON file** – no need to fork and edit code.
 
 In the first version:
+
 - Update your name, bio, social links, experience, projects, etc.
 - Future versions will support a backend and potentially headless CMS options.
 
@@ -67,6 +86,3 @@ If you encounter any issues or have questions, feel free to open an issue here:
 ## 📄 License
 
 Licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
-
----
-
