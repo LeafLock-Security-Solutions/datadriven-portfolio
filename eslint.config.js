@@ -1,10 +1,10 @@
 import js from '@eslint/js';
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
+import prettierConfig from 'eslint-config-prettier';
 import jest from 'eslint-plugin-jest';
 import jsdoc from 'eslint-plugin-jsdoc';
 import perfectionist from 'eslint-plugin-perfectionist';
-import prettier from 'eslint-plugin-prettier';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
@@ -33,7 +33,6 @@ export default [
       jest,
       jsdoc,
       perfectionist,
-      prettier,
       react,
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
@@ -48,7 +47,7 @@ export default [
       ...tailwindcss.configs.recommended.rules,
       ...perfectionist.configs['recommended-alphabetical'].rules,
       ...jest.configs.recommended.rules,
-      ...prettier.configs.recommended.rules,
+      ...prettierConfig.rules,
       ...tseslint.configs.recommended.rules,
       '@typescript-eslint/naming-convention': [
         'error',
