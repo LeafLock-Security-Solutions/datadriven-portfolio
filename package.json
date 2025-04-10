@@ -4,15 +4,16 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
     "build": "vite build",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix --format=stylish",
-    "preview": "vite preview --host",
+    "check:md-links": "markdown-link-check -c .mlc.config.json -i node_modules .",
+    "dev": "vite --host",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "prepare": "husky",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix --format=stylish",
     "postinstall": "sudo chmod +x scripts/*.sh || chmod +x scripts/*.sh",
+    "prepare": "husky",
+    "preview": "vite preview --host",
     "spell": "cspell lint . --no-progress --color --show-suggestions",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch"
@@ -57,6 +58,7 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.5.0",
+    "markdown-link-check": "^3.13.7",
     "prettier": "^3.5.3",
     "vite": "^6.2.0"
   }
