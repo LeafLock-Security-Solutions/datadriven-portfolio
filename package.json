@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "check": "npm run lint && npm run format:check",
     "check:md-links": "markdown-link-check -c .mlc.config.json -i node_modules .",
     "dev": "vite --host",
     "format": "prettier --write .",
@@ -16,7 +17,8 @@
     "preview": "vite preview --host",
     "spell": "cspell lint . --no-progress --color --show-suggestions",
     "test": "jest --passWithNoTests",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "verify": "npm run check && npm run test && npm run spell"
   },
   "lint-staged": {
     "**/*.{js,jsx}": [
