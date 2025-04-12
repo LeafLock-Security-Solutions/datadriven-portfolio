@@ -1,10 +1,14 @@
+import { config } from '@/config/Validate';
+import { getCurrentTimestamp } from '@/utils/time';
 import log from 'loglevel';
 
-const TAG = '[DDP]';
+const { level, tag } = config.logger;
 const isProd = import.meta.env.MODE === 'production';
 
+const resolvedLevel = isProd ? level.production : level.development;
+
 // Set level based on environment
-log.setLevel(isProd ? 'silent' : 'debug');
+log.setLevel(resolvedLevel);
 
 const originalFactory = log.methodFactory;
 
@@ -23,10 +27,10 @@ if (!log._customized) {
     const rawMethod = originalFactory(methodName, logLevel, loggerName);
 
     return function (...args) {
-      const timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
-      const level = methodName.toUpperCase();
+      const timestamp = getCurrentTimestamp();
+      const logLevelLabel = methodName.toUpperCase();
 
-      rawMethod(`${TAG} [${timestamp}] [${level}]`, ...args);
+      rawMethod(`[${tag}] [${timestamp}] [${logLevelLabel}]`, ...args);
     };
   };
   log.setLevel(log.getLevel());
