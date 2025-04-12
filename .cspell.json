@@ -43,7 +43,7 @@
     "esbenp",
     "dbaeumer"
   ],
-  "ignorePaths": ["node_modules", "dist", ".git", ".husky/_", "public/vite.svg"],
+  "ignorePaths": ["node_modules", "coverage", "dist", ".git", ".husky/_", "package-lock.json"],
   "enableFiletypes": ["js", "jsx", "ts", "tsx", "json", "md", "css", "html"],
   "allowCompoundWords": false,
   "reporters": ["default"],
