@@ -30,7 +30,8 @@ log_info "🔍 Checking spelling and typos with cspell..."
 npx cspell lint $STAGED_FILES \
   --no-progress \
   --color \
-  --show-suggestions
+  --show-suggestions \
+  --no-must-find-files
 
 STATUS=$?
 
