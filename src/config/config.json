@@ -1,0 +1,33 @@
+{
+  "logger": {
+    "tag": "DDP",
+    "level": {
+      "development": "debug",
+      "production": "silent"
+    }
+  },
+  "theme": {
+    "defaultMode": "light",
+    "availableThemes": ["light", "dark", "system", "colorful"],
+    "colors": {
+      "light": {
+        "primary": "#3b82f6",
+        "secondary": "#a855f7",
+        "accent": "#14b8a6"
+      },
+      "dark": {
+        "primary": "#1e293b",
+        "secondary": "#64748b",
+        "accent": "#22d3ee"
+      },
+      "colorful": {
+        "primary": "#f59e0b",
+        "secondary": "#ef4444",
+        "accent": "#10b981"
+      }
+    }
+  },
+  "source": {
+    "path": "/data/source.json"
+  }
+}
