@@ -4,19 +4,21 @@
 
 [![Status](https://img.shields.io/badge/status-active-brightgreen)](#)
 [![Version](https://img.shields.io/github/package-json/v/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio)
+[![License](https://img.shields.io/github/license/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/blob/main/LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/commits/main)
-[![License](https://img.shields.io/github/license/LeafLock-Security-Solutions/datadriven-portfolio)](https://www.apache.org/licenses/LICENSE-2.0)
 
 [![Lint](https://img.shields.io/badge/lint-passing-brightgreen?logo=eslint)](#)
 [![Prettier](https://img.shields.io/badge/code%20style-prettier-ff69b4?logo=prettier)](#)
-[![Tests](https://img.shields.io/badge/tests-setup-green?logo=jest)](#)
-[![Commit Signatures](https://img.shields.io/badge/commits-signed-orange?logo=git)](#)
 [![Spell Check](https://img.shields.io/badge/spellcheck-enabled-blue)](#)
 [![MD Links](https://img.shields.io/badge/markdown-links--checked-yellow)](#)
+[![Commit Signatures](https://img.shields.io/badge/commits-signed-orange?logo=git)](#)
 
+[![CI](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/actions/workflows/ci.yml)
 [![Build](https://img.shields.io/github/actions/workflow/status/LeafLock-Security-Solutions/datadriven-portfolio/ci.yml?branch=main)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/actions)
+[![Tests](https://img.shields.io/badge/tests-setup-green?logo=jest)](#)
 [![Code Coverage](https://img.shields.io/codecov/c/github/LeafLock-Security-Solutions/datadriven-portfolio)](https://codecov.io/gh/LeafLock-Security-Solutions/datadriven-portfolio)
 [![Security](https://img.shields.io/badge/security-monitored-orange)](#)
+
 [![Repo Size](https://img.shields.io/github/repo-size/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio)
 [![Open Issues](https://img.shields.io/github/issues/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/issues)
 
