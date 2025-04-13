@@ -7,7 +7,7 @@
     }
   },
   "theme": {
-    "defaultMode": "light",
+    "defaultMode": "colorful",
     "availableThemes": ["light", "dark", "system", "colorful"],
     "colors": {
       "light": {
