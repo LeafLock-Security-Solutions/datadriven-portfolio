@@ -1,68 +1,60 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Import Tailwind layers in the recommended order */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* -----------------------------------------------------------------------------
+  🎨 Theme Variables
+  Defines color variables for each supported theme mode:
+  - :root/.light (default)
+  - .dark
+  - .colorful
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  These variables can be used throughout the app using `var(--color-...)`.
+----------------------------------------------------------------------------- */
+
+/* Default theme (used when no class is set or for 'light' mode) */
+:root,
+.light {
+  --color-primary: #3b82f6;
+  --color-secondary: #a855f7;
+  --color-accent: #14b8a6;
+  --color-bg: #ffffff;
+  --color-text: #000000;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Dark theme overrides */
+.dark {
+  --color-primary: #1e293b;
+  --color-secondary: #64748b;
+  --color-accent: #22d3ee;
+  --color-bg: #0f172a;
+  --color-text: #ffffff;
 }
 
+/* Colorful theme overrides */
+.colorful {
+  --color-primary: #f59e0b;
+  --color-secondary: #ef4444;
+  --color-accent: #10b981;
+  --color-bg: #fef3c7;
+  --color-text: #1f2937;
+}
+
+/* -----------------------------------------------------------------------------
+  🔧 Base Layout Styling
+  Ensures consistent full-height layout and transitions across themes.
+----------------------------------------------------------------------------- */
+html,
 body {
+  min-height: 100%;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  transition: background-color 0.3s ease;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Apply background and text colors from the active theme variables */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
