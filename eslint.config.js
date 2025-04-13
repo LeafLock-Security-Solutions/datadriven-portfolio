@@ -57,7 +57,7 @@ export default [
           selector: 'variableLike',
         },
         {
-          format: ['camelCase'],
+          format: ['camelCase', 'PascalCase'],
           selector: 'function',
         },
         {
@@ -85,7 +85,7 @@ export default [
           selector: 'enumMember',
         },
         {
-          format: ['UPPER_CASE', 'camelCase'],
+          format: ['UPPER_CASE', 'camelCase', 'PascalCase'],
           modifiers: ['const'],
           selector: 'variable',
         },
