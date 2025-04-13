@@ -1,0 +1,33 @@
+title = "Gitleaks Config"
+
+[allowlist]
+# Files to ignore
+files = [
+  "package-lock.json",
+  "yarn.lock",
+  "pnpm-lock.yaml",
+  "node_modules/",
+  ".husky/_",
+  ".git/",
+]
+
+# Regex patterns to ignore false positives
+regexes = [
+  '''(?i)(example|dummy|placeholder)[-_]?(api|secret|token|key|pwd|pass)[:=]["']?[a-z0-9-_]{10,}["']?'''
+]
+
+[general]
+# Fail on leaks
+fail = true
+# Redact secrets in output
+redact = true
+# Show verbose output
+verbose = true
+# Skip files >1MB to speed up scan
+max-file-size = 1048576
+
+[[rules]]
+id = "generic-api-key"
+description = "Generic API Key"
+regex = '''(?i)(api[-_]?key|secret|token)[\"']?\s*[:=]\s*[\"']?[a-z0-9-_]{16,45}[\"']?'''
+tags = ["key", "API"]
