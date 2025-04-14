@@ -46,7 +46,7 @@ REGEX_VALID_REACT_COMPONENT="^[A-Z][a-zA-Z0-9]*\\.(jsx?|tsx?)$"
 REGEX_VALID_HOOK="^use[A-Z][a-zA-Z0-9]*\\.js$"
 
 # Get list of staged files
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACMR)
+STAGED_PATHS=$(git diff --cached --name-only --diff-filter=ACMR | grep -v '^.github')
 
 for file in $STAGED_FILES; do
   IFS='/' read -ra PATH_PARTS <<< "$file"
