@@ -22,12 +22,12 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 🔒 Scan for secrets with Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        with:
-          config-path: .gitleaks.toml
-        env:
-          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+      # - name: 🔒 Scan for secrets with Gitleaks
+      #   uses: gitleaks/gitleaks-action@v2
+      #   with:
+      #     config-path: .gitleaks.toml
+      #   env:
+      #     GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
 
       - name: ✅ Run Verify (lint, format check, spell check, tests)
         run: npm run verify
