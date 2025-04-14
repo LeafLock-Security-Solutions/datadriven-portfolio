@@ -1,0 +1,22 @@
+name: 🎨 Design Feedback
+description: Provide or request feedback on UI/UX elements
+title: '[Design] '
+labels: ['design']
+assignees: []
+
+body:
+  - type: textarea
+    id: area
+    attributes:
+      label: Affected Area
+      description: Which part of the UI is being reviewed?
+      placeholder: Navigation bar responsiveness
+    validations:
+      required: true
+
+  - type: textarea
+    id: feedback
+    attributes:
+      label: Feedback or Suggestions
+      description: Provide constructive feedback or ideas for improvement.
+      placeholder: Suggest reducing padding on mobile for better spacing

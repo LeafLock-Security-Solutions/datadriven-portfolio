@@ -1,0 +1,22 @@
+name: 📄 Documentation
+description: Request or propose updates to documentation
+title: '[Docs] '
+labels: ['documentation']
+assignees: []
+
+body:
+  - type: textarea
+    id: section
+    attributes:
+      label: Affected Section
+      description: Which part of the documentation needs improvement?
+      placeholder: Contributing guidelines or theme setup
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Update
+      description: Explain the proposed change or addition.
+      placeholder: Add a section on how to use `ThemeProvider`

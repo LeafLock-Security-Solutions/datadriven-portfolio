@@ -1,0 +1,21 @@
+name: 💬 Question
+description: Ask a question about the code, tools, or decisions
+title: '[Question] '
+labels: ['question']
+assignees: []
+
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: What is your question?
+      description: Ask your question clearly so others can help.
+      placeholder: Why do we use Zod instead of Yup?
+    validations:
+      required: true
+
+  - type: input
+    id: context
+    attributes:
+      label: Related context (optional)
+      placeholder: Link to line of code, PR, or doc

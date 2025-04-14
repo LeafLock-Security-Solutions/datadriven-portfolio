@@ -1,0 +1,40 @@
+name: 🚀 Feature Request
+description: Suggest a new feature, enhancement, or improvement
+title: '[Feature] '
+labels: ['enhancement']
+assignees: []
+
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: ✨ Description
+      description: A clear and concise description of the feature you'd like to see.
+      placeholder: 'It would be great if the user could customize the theme using JSON…'
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: criteria
+    attributes:
+      label: 📋 Acceptance Criteria
+      description: Define the conditions or goals for the feature to be considered complete.
+      options:
+        - label: Clear list of requirements or goals
+        - label: UI/UX expectations (if any)
+        - label: Performance or accessibility considerations
+
+  - type: textarea
+    id: context
+    attributes:
+      label: 📌 Additional Context
+      description: Add any other context, screenshots, or references that might help.
+      placeholder: 'Related to issue #42, or see mockup in Figma link...'
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: ✅ Checklist
+      options:
+        - label: This issue is not a duplicate
+        - label: I've read the contributing guidelines

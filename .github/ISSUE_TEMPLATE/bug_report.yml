@@ -1,0 +1,27 @@
+name: 🐛 Bug Report
+description: File a bug or unexpected behavior
+title: '[Bug]: '
+labels: ['bug']
+assignees: []
+
+body:
+
+- type: textarea
+  id: description
+  attributes:
+  label: What happened?
+  description: Describe the problem clearly.
+  placeholder: "The dropdown doesn’t switch themes properly..."
+  validations:
+  required: true
+- type: textarea
+  id: steps
+  attributes:
+  label: Steps to Reproduce
+  description: Provide a list of steps to reproduce the issue.
+  placeholder: | 1. Go to... 2. Click... 3. Observe...
+- type: input
+  id: environment
+  attributes:
+  label: Browser/Device/OS
+  placeholder: Chrome 123, MacOS

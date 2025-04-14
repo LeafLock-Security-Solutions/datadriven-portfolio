@@ -1,0 +1,32 @@
+name: 📘 Task
+description: A well-scoped piece of work with a clear outcome
+title: '[Task] '
+labels: ['task']
+assignees: []
+
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Task Summary
+      description: Describe what this task should accomplish.
+      placeholder: Implement the layout component using Tailwind...
+    validations:
+      required: true
+
+  - type: textarea
+    id: criteria
+    attributes:
+      label: Acceptance Criteria
+      description: What defines the task as complete?
+      placeholder: |
+        - Layout loads on all pages
+        - Responsiveness verified on mobile and desktop
+    validations:
+      required: false
+
+  - type: input
+    id: due
+    attributes:
+      label: Due Date
+      placeholder: YYYY-MM-DD
