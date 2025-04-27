@@ -2,22 +2,22 @@
 
 **Your portfolio, powered by JSON. Zero code. Total flexibility.**
 
-[![Status](https://img.shields.io/badge/status-active-brightgreen)](#)
+![Status](https://img.shields.io/badge/status-active-brightgreen)
 [![Version](https://img.shields.io/github/package-json/v/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio)
 [![License](https://img.shields.io/github/license/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/blob/main/LICENSE)
 [![Last Commit](https://img.shields.io/github/last-commit/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/commits/main)
 
-[![Lint](https://img.shields.io/badge/lint-passing-brightgreen?logo=eslint)](#)
-[![Prettier](https://img.shields.io/badge/code%20style-prettier-ff69b4?logo=prettier)](#)
-[![Spell Check](https://img.shields.io/badge/spellcheck-enabled-blue)](#)
-[![MD Links](https://img.shields.io/badge/markdown-links--checked-yellow)](#)
-[![Commit Signatures](https://img.shields.io/badge/commits-signed-orange?logo=git)](#)
+![Lint](https://img.shields.io/badge/lint-passing-brightgreen?logo=eslint)
+![Prettier](https://img.shields.io/badge/code%20style-prettier-ff69b4?logo=prettier)
+![Spell Check](https://img.shields.io/badge/spellcheck-enabled-blue)
+![MD Links](https://img.shields.io/badge/markdown-links--checked-yellow)
+![Commit Signatures](https://img.shields.io/badge/commits-signed-orange?logo=git)
 
 [![CI](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/actions/workflows/ci.yml)
 [![Build](https://img.shields.io/github/actions/workflow/status/LeafLock-Security-Solutions/datadriven-portfolio/ci.yml?branch=main)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/actions)
-[![Tests](https://img.shields.io/badge/tests-setup-green?logo=jest)](#)
+![Tests](https://img.shields.io/badge/tests-setup-green?logo=jest)
 [![Code Coverage](https://img.shields.io/codecov/c/github/LeafLock-Security-Solutions/datadriven-portfolio)](https://codecov.io/gh/LeafLock-Security-Solutions/datadriven-portfolio)
-[![Security](https://img.shields.io/badge/security-monitored-orange)](#)
+![Security](https://img.shields.io/badge/security-monitored-orange)
 
 [![Repo Size](https://img.shields.io/github/repo-size/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio)
 [![Open Issues](https://img.shields.io/github/issues/LeafLock-Security-Solutions/datadriven-portfolio)](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/issues)
@@ -71,8 +71,8 @@ Check out a live example at: [https://charanravela.com](https://charanravela.com
 
 We care about the experience of everyone using and contributing to this project.
 
-- 💙 We encourage maintaining a healthy balance while working on tech. Take breaks, rest your eyes, and care for your well-being. Read more in [docs/wellbeing.md](docs/wellbeing.md).
-- 🔐 Security is everyone’s responsibility — whether you're building or browsing. Follow good practices like locking your device, enabling MFA, and protecting your credentials. See [docs/developer_security_guide.md](docs/developer_security_guide.md) for tips.
+- 💙 We encourage maintaining a healthy balance while working on tech. Take breaks, rest your eyes, and care for your well-being. Read more in [docs/WELLBEING.md](./docs/WELLBEING.md).
+- 🔐 Security is everyone’s responsibility — whether you're building or browsing. Follow good practices like locking your device, enabling MFA, and protecting your credentials. See [docs/DEVELOPER_SECURITY_GUIDE.md](./docs/DEVELOPER_SECURITY_GUIDE.md) for tips.
 
 Together, let’s build with care — for ourselves, our users, and our digital spaces.
 
