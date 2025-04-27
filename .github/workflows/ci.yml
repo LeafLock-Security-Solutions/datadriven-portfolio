@@ -1,5 +1,4 @@
 name: CI
-
 on:
   push:
     branches: ['**']
@@ -9,10 +8,11 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
-
     steps:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: ⚙️ Set up Node.js
         uses: actions/setup-node@v4
@@ -24,12 +24,12 @@ jobs:
 
       - name: 🔒 Scan for secrets with Gitleaks
         uses: gitleaks/gitleaks-action@v2
-        with:
-          config-path: .gitleaks.toml
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}
+          GITLEAKS_CONFIG: .gitleaks.toml
 
-      - name: ✅ Run Verify (lint, format check, spell check, tests)
+      - name: ✅ Run Verify (lint, format, spell, tests)
         run: npm run verify
 
       - name: 🔨 Run Build
