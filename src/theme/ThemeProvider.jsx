@@ -1,4 +1,4 @@
-import { config } from '@/config/Validate';
+import { config } from '@/config/validate';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 

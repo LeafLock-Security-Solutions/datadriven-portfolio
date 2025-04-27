@@ -1,7 +1,7 @@
-import { config } from '@/config/Validate';
+import { config } from '@/config/validate';
 import log from '@/utils/logger';
 
-import { sourceSchema } from './schema/source.js';
+import { sourceSchema } from './schema/source';
 
 let source = null;
 

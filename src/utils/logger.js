@@ -1,4 +1,4 @@
-import { config } from '@/config/Validate';
+import { config } from '@/config/validate';
 import { getCurrentTimestamp } from '@/utils/time';
 import log from 'loglevel';
 
