@@ -8,7 +8,6 @@ const dirName = dirname(fileName);
 
 // https://vite.dev/config/
 export default defineConfig({
-  // Test comment
   plugins: [react()],
   resolve: {
     alias: {

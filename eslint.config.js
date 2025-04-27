@@ -130,7 +130,6 @@ export default [
       'react-refresh/only-export-components': ['error', { allowConstantExport: true }],
       'react/react-in-jsx-scope': 'off',
       semi: ['error', 'always'],
-      'space-before-function-paren': ['error', 'never'],
     },
     settings: {
       react: {
