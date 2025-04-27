@@ -5,7 +5,7 @@
 # Purpose: Prevents accidental commits of API keys, tokens, passwords,
 # or hardcoded absolute file/folder paths.
 #
-# - Runs Gitleaks via Docker
+# - Runs Gitleaks via Docker on all staged changes at once
 # - Scans for UNIX and Windows-style absolute paths
 # - Blocks commit if anything suspicious is found
 #
@@ -13,60 +13,85 @@
 #   scripts/check-secrets.sh || exit 1
 # -----------------------------------------------------------------------------------
 
+set -euo pipefail
+set +u
 . "$(dirname "$0")/utils.sh"
+set -u
 
 echo ""
-log_info "🔍 Running secret and path scan before commit..."
+log_info "Running secret and path scan before commit..."
 
-# --- Run Gitleaks via Docker ---
-log_info "🚨 Scanning with Gitleaks (via Docker)..."
-docker run --rm \
-  -v "$(pwd)":/path \
-  -v "$(pwd)/.gitleaks.toml":/path/.gitleaks.toml \
-  zricethezav/gitleaks:latest \
-  detect --source="/path" --no-git --redact --config="/path/.gitleaks.toml" \
-  | tee .gitleaks-report.txt
+# 1) collect staged files
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM \
+  | grep -Ev '^node_modules/' \
+  | grep -E '\.(js|jsx|ts|tsx|json|md|css)$' || true)
 
-GITLEAKS_STATUS=$?
+if [ -n "$STAGED_FILES" ]; then
+  FILE_COUNT=$(printf '%s
+' "$STAGED_FILES" | grep -cve '^$')
+  log_info "Scanning $FILE_COUNT staged file(s) with Gitleaks protect..."
 
-if [ "$GITLEAKS_STATUS" -ne 0 ]; then
-  echo ""
-  log_error "❗ Gitleaks found potential leaks."
-  log_info "📝 See details in: .gitleaks-report.txt"
+  REPORT_JSON=".gitleaks-report.json"
+  OUTPUT_LOG=".gitleaks-output.log"
+
+  # Run Gitleaks in protect mode to scan all staged changes in one go
+  if ! docker run --rm -i \
+        -v "$(pwd)":/repo \
+        -w /repo \
+        zricethezav/gitleaks:latest \
+        protect \
+          --staged \
+          --config=".gitleaks.toml" \
+          --report-format=json \
+          --report-path="$REPORT_JSON" \
+          --verbose 2>&1 | tee "$OUTPUT_LOG"; then
+    log_error "Gitleaks found potential leaks in staged changes."
+    echo ""
+    if [ -f "$REPORT_JSON" ]; then
+      COUNT=$(jq length "$REPORT_JSON")
+      log_info "Total leaks detected: $COUNT"
+      log_info "Leak details:"
+      jq -r '.[] | "[\(.File):\(.StartLine)] \(.Description)"' "$REPORT_JSON"
+      log_info "Full JSON report: $REPORT_JSON"
+    else
+      log_error "No JSON report—scan may have failed!"
+    fi
+    echo ""
+    log_error "Commit aborted due to detected secrets."
+    exit 1
+  fi
+
+  # Cleanup report and output when no leaks found
+  rm -f "$REPORT_JSON" "$OUTPUT_LOG"
+  log_success "No secrets found in staged changes."
+else
+  log_info "No staged files to scan."
 fi
 
-# --- Scan for hardcoded absolute paths ---
-log_info "🧠 Checking for hardcoded absolute file/folder paths..."
+# 2) absolute paths scan
+log_info "Checking for hardcoded absolute file/folder paths..."
+FAIL_PATH=0
+for f in $STAGED_FILES; do
+  [ -f "$f" ] || continue
 
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | grep -v '^node_modules/' | grep -E '\.(js|jsx|ts|tsx|json|md|css)$')
-HAS_PATH_ISSUES=0
+  # UNIX-style paths
+  if grep -nE '/Users/|/home/' "$f"; then
+    FAIL_PATH=1
+  fi
 
-for FILE in $STAGED_FILES; do
-  [ -f "$FILE" ] || continue
-
-  # Check UNIX absolute paths
-  grep -nE '/Users/|/home/' "$FILE" | while read -r LINE; do
-    log_error "[$FILE:${LINE%%:*}] UNIX path detected: ${LINE#*:}"
-    HAS_PATH_ISSUES=1
-  done
-
-  # Check Windows absolute paths
-  grep -nE '[A-Z]:\\\\Users\\\\|[A-Z]:\\\\Projects\\\\' "$FILE" | while read -r LINE; do
-    log_error "[$FILE:${LINE%%:*}] Windows path detected: ${LINE#*:}"
-    HAS_PATH_ISSUES=1
-  done
+  # Windows-style paths
+  if grep -nE '[A-Z]:\\Users\\|[A-Z]:\\Projects\\' "$f"; then
+    FAIL_PATH=1
+  fi
 done
 
-# --- Final check ---
-if [ "$GITLEAKS_STATUS" -ne 0 ] || [ "$HAS_PATH_ISSUES" -ne 0 ]; then
+if [ "$FAIL_PATH" -ne 0 ]; then
   echo ""
-  log_error "❌ Commit blocked due to detected secrets or hardcoded absolute paths."
-  [ "$HAS_PATH_ISSUES" -eq 1 ] && log_info "💡 Fix any absolute file paths shown above."
-  [ "$GITLEAKS_STATUS" -ne 0 ] && log_info "🔐 Review .gitleaks-report.txt for details on detected secrets."
+  log_error "Commit blocked: hardcoded absolute paths detected."
+  log_info "Fix any absolute file paths shown above."
   exit 1
-else
-  echo ""
-  log_success "✅ No secrets or absolute paths found. Safe to commit!"
-  rm -f .gitleaks-report.txt
-  exit 0
 fi
+
+echo ""
+log_success "No secrets or absolute paths found. Safe to commit!"
+exit 0

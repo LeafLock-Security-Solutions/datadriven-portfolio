@@ -24,7 +24,7 @@ if [ -z "$STAGED_FILES" ]; then
 fi
 
 echo ""
-log_info "🔍 Checking spelling and typos with cspell..."
+log_info "Checking spelling and typos with cspell..."
 
 # Run cspell with useful flags
 npx cspell lint $STAGED_FILES \

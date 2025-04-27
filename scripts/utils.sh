@@ -41,13 +41,13 @@ fi
 
 # Common logging helpers
 log_info() {
-  echo "${YELLOW}ℹ️  $1${RESET}"
+  echo "${YELLOW}💡  $1${RESET}"
 }
 
 log_success() {
-  echo "${GREEN}✅ $1${RESET}"
+  echo "${GREEN}✅  $1${RESET}"
 }
 
 log_error() {
-  echo "${RED}❌ $1${RESET}"
+  echo "${RED}❌  $1${RESET}"
 }

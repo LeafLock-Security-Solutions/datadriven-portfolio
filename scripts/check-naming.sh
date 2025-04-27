@@ -81,7 +81,7 @@ done
 # Final verdict
 if [ ${#VIOLATIONS[@]} -gt 0 ]; then
   echo ""
-  log_error "🚫 Invalid file or folder names detected:"
+  log_error "Invalid file or folder names detected:"
   for name in "${VIOLATIONS[@]}"; do
     echo " - $name"
   done
@@ -95,6 +95,6 @@ if [ ${#VIOLATIONS[@]} -gt 0 ]; then
   exit 1
 else
   echo ""
-  log_success "✅ All file and folder names follow naming conventions."
+  log_success "All file and folder names follow naming conventions."
   exit 0
 fi
