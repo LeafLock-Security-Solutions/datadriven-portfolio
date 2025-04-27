@@ -41,7 +41,11 @@
     "osarchitecture",
     "docstrings",
     "esbenp",
-    "dbaeumer"
+    "dbaeumer",
+    "pomodoro",
+    "headspace",
+    "styleguide",
+    "msys"
   ],
   "ignorePaths": ["node_modules", "coverage", "dist", ".git", ".husky/_", "package-lock.json"],
   "enableFiletypes": ["js", "jsx", "ts", "tsx", "json", "md", "css", "html"],
