@@ -1,14 +1,18 @@
-/* Import Tailwind layers in the recommended order */
+/* -----------------------------------------------------------------------------
+  🌐 Tailwind CSS Layers
+  Import Tailwind's base, components, and utilities layers in the recommended order.
+----------------------------------------------------------------------------- */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* -----------------------------------------------------------------------------
   🎨 Theme Variables
-  Defines color variables for each supported theme mode:
-  - :root/.light (default)
-  - .dark
-  - .colorful
+  Define CSS variables for each supported theme mode:
+  - :root/.light (default light theme)
+  - .dark (dark theme)
+  - .colorful (vibrant theme)
+  - .verdant (green-focused theme)
 
   These variables can be used throughout the app using `var(--color-...)`.
 ----------------------------------------------------------------------------- */
@@ -16,45 +20,54 @@
 /* Default theme (used when no class is set or for 'light' mode) */
 :root,
 .light {
-  --color-primary: #3b82f6;
-  --color-secondary: #a855f7;
-  --color-accent: #14b8a6;
-  --color-bg: #ffffff;
-  --color-text: #000000;
+  --color-primary: #3b82f6; /* Primary blue */
+  --color-secondary: #a855f7; /* Secondary purple */
+  --color-accent: #14b8a6; /* Accent teal */
+  --color-bg: #ffffff; /* Background white */
+  --color-text: #000000; /* Text black */
 }
 
 /* Dark theme overrides */
 .dark {
-  --color-primary: #1e293b;
-  --color-secondary: #64748b;
-  --color-accent: #22d3ee;
-  --color-bg: #0f172a;
-  --color-text: #ffffff;
+  --color-primary: #1e293b; /* Primary dark blue-gray */
+  --color-secondary: #64748b; /* Secondary muted gray */
+  --color-accent: #22d3ee; /* Accent cyan */
+  --color-bg: #0f172a; /* Background navy */
+  --color-text: #ffffff; /* Text white */
 }
 
 /* Colorful theme overrides */
 .colorful {
-  --color-primary: #f59e0b;
-  --color-secondary: #ef4444;
-  --color-accent: #10b981;
-  --color-bg: #fef3c7;
-  --color-text: #1f2937;
+  --color-primary: #f59e0b; /* Primary amber */
+  --color-secondary: #ef4444; /* Secondary red */
+  --color-accent: #10b981; /* Accent green */
+  --color-bg: #fef3c7; /* Background cream */
+  --color-text: #1f2937; /* Text dark gray */
+}
+
+/* Verdant theme overrides */
+.verdant {
+  --color-primary: #255f38; /* Primary forest green */
+  --color-secondary: #1f7d53; /* Secondary emerald */
+  --color-accent: #27391c; /* Accent olive */
+  --color-bg: #18230f; /* Background dark green */
+  --color-text: #ffffff; /* Text white */
 }
 
 /* -----------------------------------------------------------------------------
   🔧 Base Layout Styling
-  Ensures consistent full-height layout and transitions across themes.
+  Ensure consistent full-height layout and smooth transitions across themes.
 ----------------------------------------------------------------------------- */
 html,
 body {
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.3s ease;
+  min-height: 100%; /* Ensure the layout spans the full viewport height */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  transition: background-color 0.3s ease; /* Smooth theme transition */
 }
 
 /* Apply background and text colors from the active theme variables */
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--color-bg); /* Set background color */
+  color: var(--color-text); /* Set text color */
 }
