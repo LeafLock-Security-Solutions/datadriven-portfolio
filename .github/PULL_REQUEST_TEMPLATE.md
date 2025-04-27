@@ -46,13 +46,15 @@ Before submitting your PR, ensure the following:
 ## Labels and Reviewers
 
 ### Adding Labels
+
 - Add appropriate labels to your PR (e.g., `bug`, `enhancement`, `documentation`) by navigating to the PR page, finding the "Labels" section on the right, and selecting or creating the labels you need.
 
 ### Assigning Reviewers
+
 Assign relevant reviewers based on the area of your changes. Currently, the primary reviewer is:
+
 - **All Changes**: @charanravela
 
 To add reviewers, navigate to the PR page, find the "Reviewers" section on the right, and select the users you want to add as reviewers. GitHub will notify them of the new PR that requires their attention.
 
 If you're unsure about who to assign, you can leave it blank, and our team leads will assign appropriate reviewers.
-
