@@ -9,6 +9,7 @@ Welcome to the customization guide for **datadriven-portfolio**. This portfolio 
 All portfolio content is stored in a **remote JSON file** that you control.
 
 You can host it:
+
 - On your own domain (e.g., `https://example.com/data.json`)
 - On a public GitHub Gist or raw GitHub file
 - On a headless CMS or API in future versions
@@ -35,11 +36,7 @@ Here’s a simplified structure of what the JSON might look like:
       "url": "https://github.com/yourusername"
     }
   ],
-  "skills": [
-    "JavaScript",
-    "React",
-    "Tailwind CSS"
-  ],
+  "skills": ["JavaScript", "React", "Tailwind CSS"],
   "projects": [
     {
       "name": "Project Title",
@@ -73,6 +70,7 @@ After that, configure your portfolio to point to that URL — and your content w
 ## 🛠️ Advanced Customization (Coming Soon)
 
 Future releases will include:
+
 - Theming options (light/dark/custom colors)
 - Section toggles via JSON
 - Backend-based content management

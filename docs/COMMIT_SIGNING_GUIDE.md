@@ -3,18 +3,21 @@
 ## Why Sign Your Commits?
 
 ### What is Commit Signing?
+
 Commit signing is a process that cryptographically verifies that a commit was made by an authorized contributor. This ensures that code changes in your repository come from legitimate sources.
 
 ### Why is Commit Signing Important?
+
 - **Authenticity**: Prevents impersonation by ensuring commits come from verified contributors.
 - **Security**: Protects against supply chain attacks where malicious actors insert unauthorized code.
 - **Trust**: Builds confidence among team members and project maintainers.
 - **Compliance**: Required for some organizations and open-source projects following security best practices.
 
 ### Advantages of Signed Commits
-- Ensures authorship integrity  
-- Helps prevent unauthorized code injection  
-- Required by some security-conscious projects  
+
+- Ensures authorship integrity
+- Helps prevent unauthorized code injection
+- Required by some security-conscious projects
 - Useful in compliance-driven workflows
 
 ---
@@ -32,6 +35,7 @@ Gitsign does not have a single universal installation command for all systems. T
 Before installation, identify your **Operating System** and **System Architecture**.
 
 #### Linux and macOS
+
 Use the following command to determine your architecture:
 
 ```sh
@@ -39,32 +43,40 @@ uname -sm
 ```
 
 Expected results:
+
 - `Linux x86_64` → `linux_amd64`
 - `Linux aarch64` → `linux_arm64`
 - `Darwin x86_64` → `darwin_amd64`
 - `Darwin arm64` (Apple Silicon) → `darwin_arm64`
 
 To verify on macOS with more detail:
+
 ```sh
 uname -m
 # or
 arch
 ```
+
 If the result is `arm64`, you're on an Apple Silicon Mac. If it's `x86_64`, you're on an Intel Mac.
 
 #### Windows
+
 To determine architecture on Windows:
 
 ##### Using PowerShell:
+
 ```powershell
 echo $env:PROCESSOR_ARCHITECTURE
 ```
+
 Possible outputs:
+
 - `AMD64` → 64-bit (x86_64)
 - `ARM64` → ARM-based systems
 - `x86` → 32-bit (not recommended for Gitsign)
 
 ##### Using Command Prompt:
+
 ```cmd
 wmic os get osarchitecture
 ```
@@ -74,11 +86,13 @@ wmic os get osarchitecture
 Download the appropriate `.exe` file based on your architecture.
 
 #### Command Prompt:
+
 ```cmd
 curl -LO https://github.com/sigstore/gitsign/releases/latest/download/gitsign_<VERSION>_windows_amd64.exe
 ```
 
 #### PowerShell:
+
 ```powershell
 Invoke-WebRequest -Uri "https://github.com/sigstore/gitsign/releases/latest/download/gitsign_<VERSION>_windows_amd64.exe" -OutFile "gitsign.exe"
 ```
@@ -86,10 +100,12 @@ Invoke-WebRequest -Uri "https://github.com/sigstore/gitsign/releases/latest/down
 Move `gitsign.exe` to a directory that is part of your system `PATH`, allowing you to run it from any terminal.
 
 #### Common folder options:
+
 - `C:\Program Files\Gitsign\` (create this directory manually)
 - `C:\Windows\System32\` (requires admin rights)
 
 #### To add Gitsign to your PATH:
+
 1. Press `Win + S` and search for **Environment Variables**, then select **Edit the system environment variables**.
 2. In the **System Properties** window, click the **Environment Variables** button.
 3. Under **System variables**, scroll and select the `Path` variable. Click **Edit**.
@@ -115,6 +131,7 @@ sudo apk add --allow-untrusted gitsign_<VERSION>_linux_amd64.apk
 ```
 
 #### Or run the binary directly:
+
 ```sh
 curl -LO https://github.com/sigstore/gitsign/releases/latest/download/gitsign_<VERSION>_linux_amd64
 chmod +x gitsign_<VERSION>_linux_amd64
@@ -191,10 +208,12 @@ Git will display signature verification if everything is set up correctly.
 ## Troubleshooting
 
 ### Git Says "GPG Failed to Sign the Data"
+
 - Ensure `gitsign` is correctly installed and configured.
 - Run `git config --global commit.gpgsign true` again.
 
 ### GitHub Shows "Unverified" for My Signed Commit
+
 This usually occurs because **GitHub does not trust Sigstore’s root certificate authority (CA)** by default. Even though your commit is correctly signed, GitHub may mark it as "Unverified."
 
 To verify your commit manually, you can use the following command:
@@ -215,6 +234,7 @@ If the commit is valid, you will see a successful verification message in the te
 ---
 
 ## Reference Documentation
+
 For more details on keyless commit signing with Sigstore, check the official documentation:  
 [Sigstore gitsign Documentation](https://docs.sigstore.dev/cosign/signing/gitsign/)
 
@@ -227,23 +247,29 @@ If you have already made commits without signing them, you can retroactively sig
 ### Steps to Sign Previous Commits
 
 1. Start an interactive rebase:
+
 ```sh
 git rebase -i HEAD~N
 ```
+
 Replace `N` with the number of past commits you want to sign.
 
 2. In the interactive editor, change `pick` to `edit` for each commit you want to sign.
 
 3. For each commit, run:
+
 ```sh
 git commit --amend --no-edit -S
 ```
+
 This command amends the commit and adds your signature.
 
 4. Continue the rebase:
+
 ```sh
 git rebase --continue
 ```
+
 Repeat the signing process for each commit marked for edit.
 
 For a full reference, see the Hyperledger Indy documentation:  
@@ -256,4 +282,3 @@ For a full reference, see the Hyperledger Indy documentation:
 This guide is intended for contributors to this project. Please ensure your commits are signed using Gitsign to maintain the security and authenticity of the codebase. Commit signing helps us establish trust and prevent unauthorized code changes.
 
 If you have questions or run into issues, refer to the troubleshooting section or contact the maintainers.
-

@@ -129,11 +129,11 @@ http://localhost:5173
 
 This can happen on some systems (especially Windows with Docker/WSL).
 
----
+---s
 
 ## 🤝 Contributing
 
-If you're interested in contributing, please read the [CONTRIBUTING.md](docs/CONTRIBUTING.md) guide.
+If you're interested in contributing, please read the [CONTRIBUTING.md](./CONTRIBUTING.md) guide.
 
 ---
 

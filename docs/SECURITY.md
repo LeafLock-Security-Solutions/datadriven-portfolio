@@ -17,6 +17,7 @@ We aim to respond to valid security reports within **2 working days**, and to re
 ## What to Include in Your Report
 
 To help us investigate effectively, please include as much of the following as possible:
+
 - A detailed description of the issue
 - Steps to reproduce the vulnerability
 - The potential impact (e.g., data exposure, unauthorized access, etc.)
@@ -26,6 +27,7 @@ To help us investigate effectively, please include as much of the following as p
 ## Disclosure Policy
 
 We follow a **coordinated disclosure** approach:
+
 - You report the issue to us privately
 - We investigate and patch the vulnerability
 - We publish a fix and may credit your contribution (with your permission)

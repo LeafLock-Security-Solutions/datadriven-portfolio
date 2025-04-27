@@ -18,6 +18,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [v0.1.0] - YYYY-MM-DD
 
 ### Added
+
 - Initial private repository setup
 - Basic project scaffolding using React
 - JSON-based customization support
@@ -28,11 +29,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ---
 
-## [v1.0.0] - *(upcoming)*
+## [v1.0.0] - _(upcoming)_
 
 ### Added
+
 - First public release
 - Full JSON schema and customization docs
 - Clean design template
 - Example live deployment at [charanravela.com](https://charanravela.com)
-

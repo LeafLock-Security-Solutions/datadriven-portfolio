@@ -39,4 +39,3 @@ We want this portfolio to be simple to adopt, zero-code, and eventually fully cu
 ## 💡 Suggestions?
 
 If you have ideas for features, improvements, or integrations, feel free to [open an issue](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/issues)!
-

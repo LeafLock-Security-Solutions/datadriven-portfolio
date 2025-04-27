@@ -21,6 +21,7 @@ We plan to use the following testing stack:
 Testing dependencies will be added soon to `devDependencies` in `package.json`.
 
 Expected setup:
+
 ```bash
 npm install --save-dev jest @testing-library/react @testing-library/jest-dom
 ```
@@ -60,13 +61,13 @@ This keeps related files together and easy to manage.
 We’ll follow the `describe/it` pattern using React Testing Library:
 
 ```tsx
-import { render, screen } from "@testing-library/react";
-import Button from "./Button";
+import { render, screen } from '@testing-library/react';
+import Button from './Button';
 
-describe("Button", () => {
-  it("renders with label", () => {
+describe('Button', () => {
+  it('renders with label', () => {
     render(<Button label="Click Me" />);
-    expect(screen.getByText("Click Me")).toBeInTheDocument();
+    expect(screen.getByText('Click Me')).toBeInTheDocument();
   });
 });
 ```
@@ -94,4 +95,3 @@ Remember that linting (with ESLint) catches syntax and style issues, but tests v
 ## 📬 Need Help?
 
 For questions or help writing tests, feel free to [open an issue](https://github.com/LeafLock-Security-Solutions/datadriven-portfolio/issues).
-

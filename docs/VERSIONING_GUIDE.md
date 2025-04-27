@@ -14,11 +14,11 @@ Each version is structured as:
 
 ### 🧠 Examples:
 
-| Version | Description |
-|---------|-------------|
-| `1.0.0` | First public release |
-| `1.1.0` | New section added to portfolio layout |
-| `1.1.1` | Fixed UI bug in dark mode |
+| Version | Description                                        |
+| ------- | -------------------------------------------------- |
+| `1.0.0` | First public release                               |
+| `1.1.0` | New section added to portfolio layout              |
+| `1.1.1` | Fixed UI bug in dark mode                          |
 | `2.0.0` | Introduced backend customization (breaking change) |
 
 ---
@@ -42,10 +42,10 @@ When you're ready to release:
 
 ## 🛠️ Current Version Status
 
-| Version | Status |
-|---------|--------|
-| `v0.1.0` | Private development phase |
-| `v1.0.0` *(planned)* | First open-source release with JSON-based customization |
+| Version              | Status                                                  |
+| -------------------- | ------------------------------------------------------- |
+| `v0.1.0`             | Private development phase                               |
+| `v1.0.0` _(planned)_ | First open-source release with JSON-based customization |
 
 ---
 
@@ -53,13 +53,14 @@ When you're ready to release:
 
 - [Semantic Versioning 2.0.0](https://semver.org/)
 - [GitHub: About Releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases)
-- [Conventional Commits](https://www.conventionalcommits.org/) *(optional, for consistent commit messages)*
+- [Conventional Commits](https://www.conventionalcommits.org/) _(optional, for consistent commit messages)_
 
 ---
 
 ## 🔮 Future Considerations
 
 As the project evolves, we may:
+
 - Automate versioning and changelog updates using tools like `release-please`, `standard-version`, or GitHub Actions
 - Use release branches for major updates
 - Maintain older versions for compatibility if needed

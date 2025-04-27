@@ -32,7 +32,7 @@ You can [test the SSH connection](https://docs.github.com/en/authentication/conn
 
 ### 1.4 Setup Gitsign (Required)
 
-We use [Sigstore Gitsign](../docs/COMMIT_SIGNING_GUIDE.md) for commit signing. Please follow the instructions in `docs/COMMIT_SIGNING_GUIDE.md`.
+We use [Sigstore Gitsign](./COMMIT_SIGNING_GUIDE.md) for commit signing. Please follow the instructions in `docs/COMMIT_SIGNING_GUIDE.md`.
 
 ---
 
