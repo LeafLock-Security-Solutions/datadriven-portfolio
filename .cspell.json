@@ -45,7 +45,12 @@
     "pomodoro",
     "headspace",
     "styleguide",
-    "msys"
+    "msys",
+    "keysize",
+    "keyid",
+    "signingkey",
+    "clearsign",
+    "gpgconf"
   ],
   "ignorePaths": ["node_modules", "coverage", "dist", ".git", ".husky/_", "package-lock.json"],
   "enableFiletypes": ["js", "jsx", "ts", "tsx", "json", "md", "css", "html"],
