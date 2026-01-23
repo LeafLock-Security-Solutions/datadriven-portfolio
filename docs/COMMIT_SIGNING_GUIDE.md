@@ -20,6 +20,8 @@ Commit signing is a process that cryptographically verifies that a commit was ma
 - Required by some security-conscious projects
 - Useful in compliance-driven workflows
 
+> **Note**: This project supports both GPG and Gitsign for commit signing. Choose the method that works best for your workflow.
+
 ---
 
 ## How to Set Up Commit Signing with Sigstore (gitsign)
