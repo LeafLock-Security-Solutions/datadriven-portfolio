@@ -1,70 +1,14 @@
-# Commit Message and Signing Guide
-
-To maintain a clean and readable git history, this project enforces certain conventions for commit messages and requires all commits to be signed.
-
----
-
-## Commit Message Guidelines
-
-We follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification. This creates an explicit commit history, which makes it easier to track features, fixes, and changes.
-
-### Format
-
-Each commit message consists of a **header** and an optional **body**.
-
-```
-<type>: <description>
-
-[optional body]
-```
-
-### Type
-
-The `<type>` must be one of the following:
-
-- **build**: Changes to the build system, tooling, or dependencies.
-- **chore**: Routine tasks, maintenance, or auxiliary tool changes.
-- **docs**: Documentation only changes.
-- **feat**: A new feature for the user.
-- **fix**: A bug fix for the user.
-- **refactor**: A code change that neither fixes a bug nor adds a feature.
-
-### Examples
-
-```
-feat: add workspace validation
-
-This commit introduces validation for workspace configuration files.
-It checks layout structure, command syntax, and environment variables.
-```
-
-```
-build: add git hooks for code quality enforcement
-
-Adds pre-commit, commit-msg, and pre-push hooks to enforce code
-standards before commits reach the repository.
-```
-
-```
-docs: update developer setup guide
-
-Adds instructions for installing development tools and configuring
-the local environment.
-```
-
----
-
-## Commit Signing (GPG Setup)
+# Commit Signing Guide
 
 This repository requires all commits to be cryptographically signed to ensure authenticity. Here is a guide to setting up your GPG key.
 
-### 1. Install GPG
+## 1. Install GPG
 
 - **macOS:** Install via [Homebrew](https://brew.sh/): `brew install gpg`
 - **Windows:** Install via [Gpg4win](https://www.gpg4win.org/).
 - **Linux:** Install via your package manager: `sudo apt-get install gnupg`
 
-### 2. Generate Your GPG Key
+## 2. Generate Your GPG Key
 
 Run the following command and follow the prompts. For a detailed walkthrough, see GitHub's guide on [Generating a new GPG key](https://docs.github.com/en/authentication/managing-commit-signature-verification/generating-a-new-gpg-key).
 
@@ -78,7 +22,7 @@ gpg --full-generate-key
 - Keysize: Use 4096 bits for strong security.
 - Email address: This must match the email you use for your GitHub account.
 
-### 3. Add Your GPG Key to GitHub
+## 3. Add Your GPG Key to GitHub
 
 1. **List your keys** to find your GPG key ID:
 
@@ -96,7 +40,7 @@ gpg --full-generate-key
 
 3. **Add to GitHub**: Copy the entire output and paste it as a new GPG key in your GitHub settings. For step-by-step instructions, see GitHub's guide on [Adding a GPG key to your GitHub account](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account).
 
-### 4. Configure Git
+## 4. Configure Git
 
 Tell Git to use your key and sign all commits automatically. For more details, see GitHub's guide on [Telling Git about your signing key](https://docs.github.com/en/authentication/managing-commit-signature-verification/telling-git-about-your-signing-key).
 
@@ -106,7 +50,7 @@ git config --global user.signingkey YOUR_KEY_ID
 git config --global commit.gpgsign true
 ```
 
-### 5. Verify Your Setup
+## 5. Verify Your Setup
 
 Test that signing is working without adding unnecessary commits to your history:
 
@@ -161,7 +105,9 @@ git rebase --continue
 - **Team coordination**: Inform team members as they'll need to reset their local branches
 - **Backup first**: Create a backup branch before rewriting history: `git branch backup-branch`
 
-### Troubleshooting Signing Issues
+---
+
+## Troubleshooting
 
 **GPG Agent Not Running:**
 
