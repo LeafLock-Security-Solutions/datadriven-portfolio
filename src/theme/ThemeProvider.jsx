@@ -32,10 +32,31 @@ export function ThemeProvider({ children }) {
 
   const [theme, setTheme] = useState(getInitialTheme);
 
+  const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
+
   useEffect(() => {
     document.documentElement.classList.remove(...availableThemes);
-    document.documentElement.classList.add(theme);
+    document.documentElement.classList.add(resolvedTheme);
     localStorage.setItem(LOCAL_STORAGE_KEY, theme);
+  }, [resolvedTheme, theme]);
+
+  // Listen for system preference changes when "system" is selected
+  useEffect(() => {
+    if (theme !== 'system') return;
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    /**
+     * Handles system theme change.
+     */
+    function handleChange() {
+      const newTheme = getSystemTheme();
+      document.documentElement.classList.remove(...availableThemes);
+      document.documentElement.classList.add(newTheme);
+    }
+
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
 
   return <ThemeContext.Provider value={{ setTheme, theme }}>{children}</ThemeContext.Provider>;

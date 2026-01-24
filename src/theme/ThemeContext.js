@@ -1,3 +1,4 @@
+import { config } from '@/config/validate';
 import { createContext } from 'react';
 
 /**
@@ -6,5 +7,5 @@ import { createContext } from 'react';
  */
 export const ThemeContext = createContext({
   setTheme: () => {},
-  theme: 'light',
+  theme: config.theme.defaultMode,
 });
