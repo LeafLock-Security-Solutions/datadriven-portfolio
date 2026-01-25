@@ -1,7 +1,7 @@
 import { config } from '@/config/validate';
 
 import { useTheme } from '../../theme/useTheme';
-import { Dropdown } from '../ui/dropdown';
+import { Dropdown } from '../ui/Dropdown';
 import { PaletteIcon } from '../ui/icons';
 import { Tooltip } from '../ui/Tooltip';
 import { ThemeOption } from './ThemeOption';
