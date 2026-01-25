@@ -29,8 +29,8 @@
 
 /* Dark theme overrides */
 .dark {
-  --color-primary: #1e293b; /* Primary dark blue-gray */
-  --color-secondary: #64748b; /* Secondary muted gray */
+  --color-primary: #60a5fa; /* Primary bright blue */
+  --color-secondary: #94a3b8; /* Secondary light slate */
   --color-accent: #22d3ee; /* Accent cyan */
   --color-bg: #0f172a; /* Background navy */
   --color-text: #ffffff; /* Text white */
@@ -47,9 +47,9 @@
 
 /* Verdant theme overrides */
 .verdant {
-  --color-primary: #255f38; /* Primary forest green */
-  --color-secondary: #1f7d53; /* Secondary emerald */
-  --color-accent: #27391c; /* Accent olive */
+  --color-primary: #4ade80; /* Primary bright green */
+  --color-secondary: #a3e635; /* Secondary lime */
+  --color-accent: #fbbf24; /* Accent amber/gold */
   --color-bg: #18230f; /* Background dark green */
   --color-text: #ffffff; /* Text white */
 }
