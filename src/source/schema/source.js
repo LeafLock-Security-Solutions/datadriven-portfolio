@@ -23,14 +23,18 @@ export const jsonPathSchema = z
     message: 'jsonPath must point to a `.json` file.',
   });
 
+const phoneSchema = z
+  .object({
+    countryCode: z.string().regex(/^\+\d{1,4}$/, 'Invalid country code format (e.g., +1)'),
+    number: z.string().regex(/^[0-9]{7,15}$/, 'Invalid phone number format'),
+  })
+  .optional();
+
 export const sourceSchema = z.object({
   email: z.string().email().optional(),
   firstName: z.string().optional(),
   jsonPath: jsonPathSchema,
   lastName: z.string().optional(),
-  phone: z
-    .string()
-    .regex(/^\+?[0-9\- ]{7,20}$/, 'Invalid phone number format')
-    .optional(),
+  phone: phoneSchema,
   showContactOnError: z.boolean().optional().default(false),
 });
