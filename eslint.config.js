@@ -20,6 +20,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.jest,
+        __APP_VERSION__: 'readonly',
       },
       parser: tsParser,
       parserOptions: {
@@ -90,9 +91,7 @@ export default [
           selector: 'variable',
         },
       ],
-      'comma-dangle': ['error', 'always-multiline'],
       eqeqeq: ['error', 'always'],
-      indent: ['error', 2, { SwitchCase: 1 }],
       'jsdoc/check-alignment': 'error',
       'jsdoc/check-indentation': 'error',
       'jsdoc/check-param-names': 'error',
@@ -113,23 +112,17 @@ export default [
       ],
       'jsdoc/require-param': 'error',
       'jsdoc/require-returns': 'error',
-      'keyword-spacing': ['error', { after: true, before: true }],
-      'max-len': ['error', { code: 100, ignoreComments: true, tabWidth: 2 }],
       'no-console': 'error',
       'no-implicit-coercion': 'error',
-      'no-multiple-empty-lines': ['error', { max: 1 }],
       'no-shadow': 'error',
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
-      'object-curly-spacing': ['error', 'always'],
       'padding-line-between-statements': [
         'error',
         { blankLine: 'always', next: '*', prev: 'import' },
         { blankLine: 'any', next: 'import', prev: 'import' },
       ],
-      quotes: ['error', 'single', { avoidEscape: true }],
       'react-refresh/only-export-components': ['error', { allowConstantExport: true }],
       'react/react-in-jsx-scope': 'off',
-      semi: ['error', 'always'],
     },
     settings: {
       react: {

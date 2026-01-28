@@ -8,18 +8,18 @@ import { useEffect } from 'react';
  * Shows a friendly message and optional contact information.
  *
  * @param {object} props - Component props
- * @param {object} props.source - Source data with fallback contact info
+ * @param {object} props.envConfig - Environment config with fallback contact info
  * @returns {JSX.Element} The rendered error page
  */
-export function ErrorPage({ source }) {
-  const { email, firstName, lastName, phone, showContactOnError } = source || {};
+export function ErrorPage({ envConfig }) {
+  const { email, firstName, lastName, phone, showContactOnError } = envConfig || {};
 
   useEffect(() => {
     log.warn('[ErrorPage] Displayed - profile failed to load', {
-      hasSource: Boolean(source),
+      hasEnvConfig: Boolean(envConfig),
       showContactOnError,
     });
-  }, [source, showContactOnError]);
+  }, [envConfig, showContactOnError]);
   const name = [firstName, lastName].filter(Boolean).join(' ');
 
   // Format phone number for display and tel: link
@@ -92,7 +92,7 @@ export function ErrorPage({ source }) {
 }
 
 ErrorPage.propTypes = {
-  source: PropTypes.shape({
+  envConfig: PropTypes.shape({
     email: PropTypes.string,
     firstName: PropTypes.string,
     lastName: PropTypes.string,

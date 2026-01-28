@@ -1,9 +1,14 @@
+import { appState } from '@/context/validate';
 import { useDynamicFavicon } from '@/hooks/useDynamicFavicon';
 import log from '@/utils/logger';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import { ThemeSelector } from '../ThemeSelector';
+
+const { copyright } = appState;
+const currentYear = new Date().getFullYear();
+const appVersion = __APP_VERSION__;
 
 /**
  * Main layout wrapper component.
@@ -16,8 +21,9 @@ import { ThemeSelector } from '../ThemeSelector';
 export function Layout({ children }) {
   const [primaryColor, setPrimaryColor] = useState('#3b82f6');
 
-  // Log layout mount
+  // Log layout mount with version
   useEffect(() => {
+    log.info(`[App] Data-Driven Portfolio v${appVersion}`);
     log.debug('[Layout] Mounted');
     return () => log.debug('[Layout] Unmounted');
   }, []);
@@ -57,10 +63,18 @@ export function Layout({ children }) {
     'transition-colors duration-300',
   ].join(' ');
 
+  const copyrightClasses = [
+    'fixed bottom-4 left-1/2 -translate-x-1/2',
+    'text-xs text-[var(--color-text)] opacity-40',
+  ].join(' ');
+
   return (
     <>
       <ThemeSelector />
       <main className={mainClasses}>{children}</main>
+      <div className={copyrightClasses}>
+        © {currentYear} {copyright.name} · v{appVersion}
+      </div>
     </>
   );
 }

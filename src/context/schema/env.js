@@ -1,15 +1,15 @@
 import { z } from 'zod';
 
-export const jsonPathSchema = z
+const profilePathSchema = z
   .string()
-  .min(1, 'jsonPath is required')
+  .min(1, 'DDP_PROFILE_PATH is required')
   .refine(
     val =>
       (val.startsWith('/') || val.startsWith('http://') || val.startsWith('https://')) &&
       !val.startsWith('file://'),
     {
       message: [
-        'Invalid jsonPath. Use one of the following:',
+        'Invalid DDP_PROFILE_PATH. Use one of the following:',
         '• A path starting with `/`, e.g. `/data/profile.json`',
         '  (must be placed inside the `public/` directory of this project)',
         '• A full URL like `https://example.com/profile.json`',
@@ -20,7 +20,7 @@ export const jsonPathSchema = z
     },
   )
   .refine(val => val.endsWith('.json'), {
-    message: 'jsonPath must point to a `.json` file.',
+    message: 'DDP_PROFILE_PATH must point to a `.json` file.',
   });
 
 const phoneSchema = z
@@ -30,11 +30,11 @@ const phoneSchema = z
   })
   .optional();
 
-export const sourceSchema = z.object({
+export const envConfigSchema = z.object({
   email: z.string().email().optional(),
-  firstName: z.string().optional(),
-  jsonPath: jsonPathSchema,
-  lastName: z.string().optional(),
+  firstName: z.string().min(1, 'DDP_FIRST_NAME is required'),
+  lastName: z.string().min(1, 'DDP_LAST_NAME is required'),
   phone: phoneSchema,
+  profilePath: profilePathSchema,
   showContactOnError: z.boolean().optional().default(false),
 });
