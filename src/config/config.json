@@ -7,10 +7,7 @@
     }
   },
   "theme": {
-    "defaultMode": "colorful",
+    "defaultMode": "verdant",
     "availableThemes": ["light", "dark", "colorful", "verdant", "system"]
-  },
-  "source": {
-    "path": "/data/source.json"
   }
 }
