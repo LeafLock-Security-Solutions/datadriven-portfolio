@@ -8,6 +8,7 @@ const dirName = dirname(fileName);
 
 // https://vite.dev/config/
 export default defineConfig({
+  envPrefix: 'DDP_',
   plugins: [react()],
   resolve: {
     alias: {
