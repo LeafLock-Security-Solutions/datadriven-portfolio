@@ -1,9 +1,13 @@
+import { appState } from '@/context/validate';
 import { useDynamicFavicon } from '@/hooks/useDynamicFavicon';
 import log from '@/utils/logger';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
 import { ThemeSelector } from '../ThemeSelector';
+
+const { copyright } = appState;
+const currentYear = new Date().getFullYear();
 
 /**
  * Main layout wrapper component.
@@ -57,10 +61,18 @@ export function Layout({ children }) {
     'transition-colors duration-300',
   ].join(' ');
 
+  const copyrightClasses = [
+    'fixed bottom-4 left-1/2 -translate-x-1/2',
+    'text-xs text-[var(--color-text)] opacity-40',
+  ].join(' ');
+
   return (
     <>
       <ThemeSelector />
       <main className={mainClasses}>{children}</main>
+      <div className={copyrightClasses}>
+        © {currentYear} {copyright.name}
+      </div>
     </>
   );
 }
