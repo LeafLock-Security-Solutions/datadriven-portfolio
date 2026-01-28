@@ -1,4 +1,5 @@
 import { config } from '@/config/validate';
+import log from '@/utils/logger';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 
@@ -22,15 +23,26 @@ const { availableThemes, defaultMode } = config.theme;
 export function ThemeProvider({ children }) {
   const getInitialTheme = () => {
     const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-    if (stored && availableThemes.includes(stored)) return stored;
+    if (stored && availableThemes.includes(stored)) {
+      log.debug('[Theme] Loaded from localStorage:', stored);
+      return stored;
+    }
 
     if (defaultMode === 'system') {
-      return getSystemTheme();
+      const systemTheme = getSystemTheme();
+      log.debug('[Theme] Using system preference:', systemTheme);
+      return systemTheme;
     }
+    log.debug('[Theme] Using default:', defaultMode);
     return defaultMode;
   };
 
   const [theme, setTheme] = useState(getInitialTheme);
+
+  const handleSetTheme = newTheme => {
+    log.info('[Theme] Changed to:', newTheme);
+    setTheme(newTheme);
+  };
 
   const resolvedTheme = theme === 'system' ? getSystemTheme() : theme;
 
@@ -59,7 +71,11 @@ export function ThemeProvider({ children }) {
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, [theme]);
 
-  return <ThemeContext.Provider value={{ setTheme, theme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ setTheme: handleSetTheme, theme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 }
 
 ThemeProvider.propTypes = {
