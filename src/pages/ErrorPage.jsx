@@ -21,7 +21,7 @@ export function ErrorPage({ source }) {
 
   const containerClasses = [
     'flex min-h-screen flex-col items-center justify-center',
-    'bg-[var(--color-bg)] p-4 text-center',
+    'bg-[var(--color-bg)] p-4 pb-32 text-center',
   ].join(' ');
 
   const cloudIconClasses = ['mb-6 size-16 sm:size-20 md:size-24', 'text-primary opacity-80'].join(
