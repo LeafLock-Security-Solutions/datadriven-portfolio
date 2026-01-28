@@ -1,26 +1,31 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-
 import { Layout } from './components/Layout';
+import { AppStateProvider } from './context/AppStateProvider';
+import { useAppState } from './hooks/useAppState';
 import { ErrorPage } from './pages/ErrorPage';
-import { loadSource } from './source/validate';
 
 /**
  * Main application component.
- * Renders the portfolio within the Layout, or ErrorPage if source loading fails.
+ * Wraps the app in AppStateProvider for global state access.
  *
  * @returns {JSX.Element} The rendered App component
  */
 function App() {
-  const [source, setSource] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  return (
+    <AppStateProvider>
+      <AppContent />
+    </AppStateProvider>
+  );
+}
 
-  useEffect(() => {
-    loadSource().then(data => {
-      setSource(data);
-      setIsLoading(false);
-    });
-  }, []);
+/**
+ * Inner app component that consumes the app state context.
+ * Renders Portfolio or ErrorPage based on profile loading status.
+ *
+ * @returns {JSX.Element|null} The rendered content
+ */
+function AppContent() {
+  const { envConfig, isLoading, profile } = useAppState();
 
   // Show nothing while loading
   if (isLoading) {
@@ -29,7 +34,7 @@ function App() {
 
   return (
     <Layout>
-      <ErrorPage source={source} />
+      {profile ? <div>Portfolio loaded - {profile.name}</div> : <ErrorPage envConfig={envConfig} />}
     </Layout>
   );
 }
