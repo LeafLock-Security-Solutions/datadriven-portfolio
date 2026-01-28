@@ -1,4 +1,5 @@
 import { useDynamicFavicon } from '@/hooks/useDynamicFavicon';
+import log from '@/utils/logger';
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 
@@ -15,6 +16,12 @@ import { ThemeSelector } from '../ThemeSelector';
 export function Layout({ children }) {
   const [primaryColor, setPrimaryColor] = useState('#3b82f6');
 
+  // Log layout mount
+  useEffect(() => {
+    log.debug('[Layout] Mounted');
+    return () => log.debug('[Layout] Unmounted');
+  }, []);
+
   // Track theme's primary color for dynamic favicon
   useEffect(() => {
     /**
@@ -24,7 +31,10 @@ export function Layout({ children }) {
       const color = getComputedStyle(document.documentElement)
         .getPropertyValue('--color-primary')
         .trim();
-      if (color) setPrimaryColor(color);
+      if (color) {
+        log.debug('[Layout] Primary color updated:', color);
+        setPrimaryColor(color);
+      }
     }
 
     updateColor();

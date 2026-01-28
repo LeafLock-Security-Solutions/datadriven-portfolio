@@ -1,5 +1,7 @@
 import { CloudOffIcon, EnvelopeIcon, PhoneIcon } from '@/components/ui/icons';
+import log from '@/utils/logger';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 
 /**
  * Error page displayed when profile data fails to load.
@@ -11,6 +13,13 @@ import PropTypes from 'prop-types';
  */
 export function ErrorPage({ source }) {
   const { email, firstName, lastName, phone, showContactOnError } = source || {};
+
+  useEffect(() => {
+    log.warn('[ErrorPage] Displayed - profile failed to load', {
+      hasSource: Boolean(source),
+      showContactOnError,
+    });
+  }, [source, showContactOnError]);
   const name = [firstName, lastName].filter(Boolean).join(' ');
 
   // Format phone number for display and tel: link
