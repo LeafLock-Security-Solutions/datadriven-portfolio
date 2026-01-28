@@ -8,6 +8,7 @@ import { ThemeSelector } from '../ThemeSelector';
 
 const { copyright } = appState;
 const currentYear = new Date().getFullYear();
+const appVersion = __APP_VERSION__;
 
 /**
  * Main layout wrapper component.
@@ -20,8 +21,9 @@ const currentYear = new Date().getFullYear();
 export function Layout({ children }) {
   const [primaryColor, setPrimaryColor] = useState('#3b82f6');
 
-  // Log layout mount
+  // Log layout mount with version
   useEffect(() => {
+    log.info(`[App] Data-Driven Portfolio v${appVersion}`);
     log.debug('[Layout] Mounted');
     return () => log.debug('[Layout] Unmounted');
   }, []);
@@ -71,7 +73,7 @@ export function Layout({ children }) {
       <ThemeSelector />
       <main className={mainClasses}>{children}</main>
       <div className={copyrightClasses}>
-        © {currentYear} {copyright.name}
+        © {currentYear} {copyright.name} · v{appVersion}
       </div>
     </>
   );

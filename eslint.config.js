@@ -20,6 +20,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.jest,
+        __APP_VERSION__: 'readonly',
       },
       parser: tsParser,
       parserOptions: {
