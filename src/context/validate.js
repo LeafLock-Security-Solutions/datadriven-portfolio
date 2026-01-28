@@ -18,18 +18,27 @@ log.debug('[State] state.json loaded and validated.');
 
 export const appState = stateResult.data;
 
+/**
+ * Builds phone object from environment variables if both parts are provided.
+ *
+ * @returns {object|undefined} Phone object with countryCode and number, or undefined
+ */
+function getPhone() {
+  const countryCode = import.meta.env.DDP_PHONE_COUNTRY_CODE;
+  const number = import.meta.env.DDP_PHONE_NUMBER;
+  if (countryCode && number) {
+    return { countryCode, number };
+  }
+  return undefined;
+}
+const phone = getPhone();
+
 // Validate DDP_* env variables at module load time (fails build if invalid)
 const rawEnvConfig = {
   email: import.meta.env.DDP_EMAIL || undefined,
   firstName: import.meta.env.DDP_FIRST_NAME || '',
   lastName: import.meta.env.DDP_LAST_NAME || '',
-  phone:
-    import.meta.env.DDP_PHONE_COUNTRY_CODE && import.meta.env.DDP_PHONE_NUMBER
-      ? {
-          countryCode: import.meta.env.DDP_PHONE_COUNTRY_CODE,
-          number: import.meta.env.DDP_PHONE_NUMBER,
-        }
-      : undefined,
+  phone,
   profilePath: import.meta.env.DDP_PROFILE_PATH || '',
   showContactOnError: import.meta.env.DDP_SHOW_CONTACT_ON_ERROR === 'true',
 };
